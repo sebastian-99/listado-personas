@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { LogginServices } from './LogginService.service';
+import { personasService } from './perosona.service';
 import { Persona } from './persona.model';
 
 @Component({
@@ -6,17 +8,25 @@ import { Persona } from './persona.model';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
+  constructor(private logginService: LogginServices , 
+              private personasService: personasService){
+
+  }
   title = 'listado de personas';
   pato: string = "pato";
-  personas: Persona[] = [
-                          new Persona('Juan', 'Perez'), 
-                          new Persona('Laura', 'Juarez'),
-                          new Persona('Violet', 'Evergarden')
-                        ];
+  personas: Persona[] = [];
 
-  personaAgregada(persona: Persona){
-    this.personas.push(persona);
+  ngOnInit(): void {
+    this.personas = this.personasService.personas;
   }
+  
+
+
+
+  /* personaAgregada(persona: Persona){
+    //this.personas.push(persona);
+    this.personasService.agregarPersona(persona);
+  } */
 }
