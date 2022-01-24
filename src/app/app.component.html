@@ -1,14 +1,5 @@
-<div class="container">
-  <div class="col">
-    <h3>{{title}}</h3>
-  </div>
-  <hr>
-  <app-formulario>
-  </app-formulario>
+<div class="box" id="heading">
+    <h1>{{title}}</h1>
 </div>
-<app-persona 
-*ngFor = "let personaElemento of personas; let i = index"
-[persona] = "personaElemento" 
-[indice] = "i"
-[pollo] = "pato">
-</app-persona>
+
+<router-outlet></router-outlet>
